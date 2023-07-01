@@ -13,7 +13,7 @@ async function rateLimiter(req, res, next) {
   }
 
   // Check if the client has exceeded the per-month limit
-  const monthlyLimitExceeded = checkMonthlyLimit(clientId);
+  const monthlyLimitExceeded = await checkMonthlyLimit(clientId);
 
   if (monthlyLimitExceeded) {
     return res.status(429).send("Too Many Requests - Monthly limit exceeded");
